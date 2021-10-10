@@ -1,0 +1,34 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'io.freefair.lombok' version '6.2.0'
+	id 'java'
+}
+
+group = 'com.github.richardkabiling'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '16'
+
+repositories {
+	maven {
+		url "https://repo.osgeo.org/repository/release/"
+	}
+	mavenCentral()
+}
+
+dependencies {
+	implementation platform('io.projectreactor:reactor-bom:2020.0.11')
+
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'io.projectreactor:reactor-core'
+	implementation 'com.github.ben-manes.caffeine:caffeine:3.0.4'
+	implementation 'org.geotools:gt-tile-client:25.2'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'io.projectreactor:reactor-test'
+}
+
+test {
+	useJUnitPlatform()
+}
